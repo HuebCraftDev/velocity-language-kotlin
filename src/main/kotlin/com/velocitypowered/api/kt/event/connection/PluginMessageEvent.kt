@@ -1,18 +1,15 @@
 package com.velocitypowered.api.kt.event.connection
 
+import com.google.common.io.ByteArrayDataInput
 import com.velocitypowered.api.event.connection.PluginMessageEvent
-import com.velocitypowered.api.proxy.messages.ChannelMessageSink
-import com.velocitypowered.api.proxy.messages.ChannelMessageSource
-import com.velocitypowered.api.proxy.messages.PluginChannelId
+import java.io.ByteArrayInputStream
 
-inline val PluginMessageEvent.source: ChannelMessageSource
-  get() = source()
 
-inline val PluginMessageEvent.sink: ChannelMessageSink
-  get() = sink()
+inline val PluginMessageEvent.messageRaw: ByteArray
+  get() = data
 
-inline val PluginMessageEvent.channel: PluginChannelId
-  get() = channel()
+inline val PluginMessageEvent.messageInputStream: ByteArrayInputStream
+  get() = dataAsInputStream()
 
-inline val PluginMessageEvent.rawMessage: ByteArray
-  get() = rawMessage()
+inline val PluginMessageEvent.messageDataStream: ByteArrayDataInput
+  get() = dataAsDataStream()
