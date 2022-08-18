@@ -11,3 +11,7 @@ fun Scheduler.TaskBuilder.delay(duration: Duration) = apply {
 fun Scheduler.TaskBuilder.repeat(duration: Duration) = apply {
   repeat(duration.inWholeMilliseconds, TimeUnit.MILLISECONDS)
 }
+fun Scheduler.TaskBuilder(plugin: Any, runnable: Runnable, builder: Scheduler.TaskBuilder.() ->
+Unit) : Scheduler.TaskBuilder = buildTask(plugin, runnable).apply(builder)
+
+
