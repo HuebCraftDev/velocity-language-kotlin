@@ -34,7 +34,7 @@ dependencies {
 }
 publishing {
   publications {
-    create<MavenPublication>("proxy-commons") {
+    create<MavenPublication>("velocity-language-kotlin") {
       from(components["java"])
     }
   }
