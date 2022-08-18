@@ -4,6 +4,6 @@ Provides Kotlin support and useful DSLs as a Velocity plugin.
 
 ## Provided dependencies
 
-* Kotlin standard library (version 1.5.0)
-* `kotlinx.serialization` (version 1.5.0, JSON serialization library version `1.2.1`)
-* `kotlinx.coroutines` (version 1.5.0)
+* Kotlin standard library (version 1.7.10)
+* `kotlinx.serialization` (version 1.7.10, JSON serialization library version `1.3.3`)
+* `kotlinx.coroutines` (version 1.6.4)
