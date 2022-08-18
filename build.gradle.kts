@@ -13,7 +13,7 @@ val coroutinesVersion: String by project
 
 group = "com.velocitypowered"
 version = System.getenv("CI_COMMIT_TAG") ?: System.getenv("CI_COMMIT_SHORT_SHA")?.let { "$it-dev"
-} ?: "0.0.0-SNAPSHOT+$velocityVersion+$kotlinVersion"
+} ?: "$velocityVersion+$kotlinVersion-SNAPSHOT"
 
 repositories {
   mavenLocal()
