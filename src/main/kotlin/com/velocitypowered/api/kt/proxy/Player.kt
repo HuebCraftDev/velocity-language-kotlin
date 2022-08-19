@@ -8,10 +8,10 @@ import com.velocitypowered.api.util.ModInfo
 import kotlinx.coroutines.future.await
 
 inline val Player.connectedServer: ServerConnection?
-  get() = currentServer.let { if (it.isPresent) it.get() else null }
+  get() = currentServer.orElse(null)
 
 inline val Player.modInformation: ModInfo?
-  get() = modInfo.let { if (it.isPresent) it.get() else null }
+  get() = modInfo.orElse(null)
 
 inline val Player.onlineMode: Boolean
   get() = isOnlineMode

@@ -13,7 +13,7 @@ import org.slf4j.Logger
 @Suppress("unused")
 class VelocityPlugin @Inject constructor(
   val proxy: ProxyServer,
-  val logger: Logger
+  private val logger: Logger
 ) {
 
   init {
