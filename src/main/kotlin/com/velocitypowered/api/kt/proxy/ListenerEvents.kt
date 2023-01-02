@@ -5,8 +5,8 @@ import com.velocitypowered.api.event.proxy.ListenerCloseEvent
 import com.velocitypowered.api.network.ListenerType
 
 inline val ListenerBoundEvent.type: ListenerType
-  get() = listenerType
+    get() = listenerType
 
 inline val ListenerCloseEvent.type: ListenerType
-  get() = listenerType
+    get() = listenerType
 

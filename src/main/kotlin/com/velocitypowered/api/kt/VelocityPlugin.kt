@@ -9,19 +9,23 @@ import com.velocitypowered.api.plugin.Plugin
 import com.velocitypowered.api.proxy.ProxyServer
 import org.slf4j.Logger
 
-@Plugin(id = "velocity-language-kotlin", authors = ["Velocity Contributors"], version = BuildConstants.BUILD_VERSION)
+@Plugin(
+    id = "velocity-language-kotlin",
+    authors = ["Velocity Contributors"],
+    version = BuildConstants.BUILD_VERSION
+)
 @Suppress("unused")
 class VelocityPlugin @Inject constructor(
-  val proxy: ProxyServer,
-  private val logger: Logger
+    val proxy: ProxyServer,
+    private val logger: Logger
 ) {
 
-  init {
-    proxy.eventManager.registerCoroutineContinuationAdapter(logger)
-  }
+    init {
+        proxy.eventManager.registerCoroutineContinuationAdapter(logger)
+    }
 
-  @Subscribe(order = PostOrder.FIRST)
-  fun onInit(event: ProxyInitializeEvent) {
-    logger.info("The Kotlin Language Adapter is initialized!")
-  }
+    @Subscribe(order = PostOrder.FIRST)
+    fun onInit(event: ProxyInitializeEvent) {
+        logger.info("The Kotlin Language Adapter is initialized!")
+    }
 }

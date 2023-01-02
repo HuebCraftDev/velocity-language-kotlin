@@ -6,10 +6,10 @@ import java.io.ByteArrayInputStream
 
 
 inline val PluginMessageEvent.messageRaw: ByteArray
-  get() = data
+    get() = data
 
 inline val PluginMessageEvent.messageInputStream: ByteArrayInputStream
-  get() = dataAsInputStream()
+    get() = dataAsInputStream()
 
 inline val PluginMessageEvent.messageDataStream: ByteArrayDataInput
-  get() = dataAsDataStream()
+    get() = dataAsDataStream()

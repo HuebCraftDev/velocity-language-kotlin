@@ -4,4 +4,4 @@ import com.velocitypowered.api.event.player.ServerConnectedEvent
 import com.velocitypowered.api.proxy.server.RegisteredServer
 
 inline val ServerConnectedEvent.target: RegisteredServer
-  get() = server
+    get() = server

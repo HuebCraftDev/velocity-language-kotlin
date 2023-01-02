@@ -5,20 +5,20 @@ import com.velocitypowered.api.proxy.player.TabListEntry
 import java.util.UUID
 
 operator fun TabList.plus(entry: TabListEntry): TabList = apply {
-  addEntry(entry)
+    addEntry(entry)
 }
 
 operator fun TabList.plusAssign(entry: TabListEntry) {
-  addEntry(entry)
+    addEntry(entry)
 }
 
 operator fun TabList.minus(uniqueId: UUID): TabList = apply {
-  removeEntry(uniqueId)
+    removeEntry(uniqueId)
 }
 
 operator fun TabList.minusAssign(uniqueId: UUID) {
-  removeEntry(uniqueId)
+    removeEntry(uniqueId)
 }
 
 operator fun TabList.contains(uniqueId: UUID): Boolean =
-  containsEntry(uniqueId)
+    containsEntry(uniqueId)
