@@ -4,4 +4,4 @@ import com.velocitypowered.api.event.player.ServerPreConnectEvent
 import com.velocitypowered.api.proxy.server.RegisteredServer
 
 inline val ServerPreConnectEvent.ServerResult.target: RegisteredServer?
-  get() = server.orElse(null)
+    get() = server.orElse(null)

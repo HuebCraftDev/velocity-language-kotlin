@@ -5,14 +5,14 @@ import com.velocitypowered.api.command.CommandManager
 import com.velocitypowered.api.command.CommandMeta
 
 inline fun CommandManager.createMeta(
-  alias: String,
-  build: CommandMeta.Builder.() -> Unit
+    alias: String,
+    build: CommandMeta.Builder.() -> Unit
 ): CommandMeta = metaBuilder(alias).apply(build).build()
 
 inline fun CommandManager.createMeta(
-  command: BrigadierCommand,
-  build: CommandMeta.Builder.() -> Unit
+    command: BrigadierCommand,
+    build: CommandMeta.Builder.() -> Unit
 ): CommandMeta = metaBuilder(command).apply(build).build()
 
 operator fun CommandManager.contains(alias: String): Boolean =
-  hasCommand(alias)
+    hasCommand(alias)

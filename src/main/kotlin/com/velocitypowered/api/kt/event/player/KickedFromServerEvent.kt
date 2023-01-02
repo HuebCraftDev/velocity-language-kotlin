@@ -5,10 +5,10 @@ import net.kyori.adventure.text.Component
 
 
 inline val KickedFromServerEvent.DisconnectPlayer.reason: Component
-  get() = reasonComponent
+    get() = reasonComponent
 
 inline val KickedFromServerEvent.RedirectPlayer.message: Component?
-  get() = messageComponent
+    get() = messageComponent
 
 inline val KickedFromServerEvent.Notify.message: Component
-  get() = messageComponent
+    get() = messageComponent

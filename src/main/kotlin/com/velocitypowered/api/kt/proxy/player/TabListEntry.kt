@@ -5,11 +5,11 @@ import net.kyori.adventure.text.Component
 
 
 inline var TabListEntry.displayName: Component?
-  get() = displayNameComponent.get()
-  set(value) {
-    setDisplayName(value)
-  }
+    get() = displayNameComponent.get()
+    set(value) {
+        setDisplayName(value)
+    }
 
 
 inline fun TabListEntry(builder: TabListEntry.Builder.() -> Unit): TabListEntry =
-  TabListEntry.builder().apply(builder).build()
+    TabListEntry.builder().apply(builder).build()

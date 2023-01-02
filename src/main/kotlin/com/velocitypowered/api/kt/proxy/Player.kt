@@ -5,17 +5,20 @@ import com.velocitypowered.api.proxy.Player
 import com.velocitypowered.api.proxy.ServerConnection
 import com.velocitypowered.api.proxy.server.RegisteredServer
 import com.velocitypowered.api.util.ModInfo
-import kotlinx.coroutines.future.await
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 inline val Player.connectedServer: ServerConnection?
-  get() = currentServer.orElse(null)
+    get() = currentServer.orElse(null)
 
 inline val Player.modInformation: ModInfo?
-  get() = modInfo.orElse(null)
+    get() = modInfo.orElse(null)
 
 inline val Player.onlineMode: Boolean
-  get() = isOnlineMode
+    get() = isOnlineMode
 
 
 suspend fun Player.connectTo(server: RegisteredServer): ConnectionRequestBuilder.Result =
-  createConnectionRequest(server).connect().await()
+    withContext(Dispatchers.IO) {
+        createConnectionRequest(server).connect().join()
+    }
