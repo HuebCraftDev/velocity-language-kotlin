@@ -24,7 +24,7 @@ repositories {
 
 dependencies {
   implementation(kotlin("reflect"))
-  implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
+  implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$coroutinesVersion")
   implementation("net.kyori:adventure-extra-kotlin:4.11.0")
