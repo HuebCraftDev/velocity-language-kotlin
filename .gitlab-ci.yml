@@ -1,3 +1,3 @@
 include:
-  - project: huebcraft/ci-pipelines
+  - project: huebcraft/ci-templates
     file: java-build-publish.yaml
