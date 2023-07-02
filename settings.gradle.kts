@@ -13,6 +13,7 @@ pluginManagement {
         kotlin("kapt") version kotlinVersion
         kotlin("plugin.serialization") version kotlinVersion
 
-        id("com.github.johnrengelman.shadow") version "7.1.2"
+        val shadowJarVersion: String by settings
+        id("com.github.johnrengelman.shadow") version shadowJarVersion 
     }
 }
