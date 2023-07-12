@@ -11,7 +11,7 @@ import org.slf4j.Logger
 
 @Plugin(
     id = "velocity-language-kotlin",
-    authors = ["Velocity Contributors"],
+    authors = ["Velocity Contributors", "The HuebCraft Team"],
     version = BuildConstants.BUILD_VERSION
 )
 @Suppress("unused")
