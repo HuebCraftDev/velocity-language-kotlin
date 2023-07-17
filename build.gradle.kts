@@ -61,7 +61,14 @@ publishing {
                 }
             }
         }
-
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/HuebCraftDev/velocity-language-kotlin")
+            credentials {
+                username = System.getenv("GH_USR")
+                password = System.getenv("GH_TOKEN")
+            }
+        }
     }
 }
 
