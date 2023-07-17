@@ -2,6 +2,8 @@
 
 Provides Kotlin support and useful DSLs as a Velocity plugin.
 
+**Note:** This is a fork of [this repository](https://github.com/VelocityPowered/velocity-language-kotlin) because the original developers discontinued development
+
 ## Provided dependencies
 
 * Kotlin standard library (version 1.9.0)
