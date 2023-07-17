@@ -5,8 +5,13 @@ import com.velocitypowered.api.event.PostOrder
 import com.velocitypowered.api.event.Subscribe
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent
 import com.velocitypowered.api.kt.event.registerCoroutineContinuationAdapter
+import com.velocitypowered.api.kt.proxy.player.TabListEntry
+import com.velocitypowered.api.kt.proxy.player.plus
+import com.velocitypowered.api.kt.proxy.server.QueryResponse
 import com.velocitypowered.api.plugin.Plugin
 import com.velocitypowered.api.proxy.ProxyServer
+import com.velocitypowered.api.proxy.server.QueryResponse
+import net.kyori.adventure.text.Component
 import org.slf4j.Logger
 
 @Plugin(

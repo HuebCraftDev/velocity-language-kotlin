@@ -3,10 +3,6 @@ package com.velocitypowered.api.kt.event.player
 import com.velocitypowered.api.event.player.KickedFromServerEvent
 import net.kyori.adventure.text.Component
 
-
-inline val KickedFromServerEvent.DisconnectPlayer.reason: Component
-    get() = reasonComponent
-
 inline val KickedFromServerEvent.RedirectPlayer.message: Component?
     get() = messageComponent
 
