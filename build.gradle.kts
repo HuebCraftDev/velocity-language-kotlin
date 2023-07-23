@@ -33,7 +33,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk9:$coroutinesVersion")
-    implementation("net.kyori:adventure-extra-kotlin:4.12.0")
+    implementation("net.kyori:adventure-extra-kotlin:4.14.0")
 
     compileOnly("com.velocitypowered:velocity-api:$velocityVersion")
     kapt("com.velocitypowered:velocity-api:$velocityVersion")
