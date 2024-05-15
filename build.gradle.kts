@@ -6,7 +6,7 @@ plugins {
     kotlin("plugin.serialization")
     id("com.github.johnrengelman.shadow")
     id("maven-publish")
-    id("org.jetbrains.gradle.plugin.idea-ext") version "1.1.6"
+    id("org.jetbrains.gradle.plugin.idea-ext") version "1.1.8"
 }
 
 val kotlinVersion: String by project
@@ -28,6 +28,7 @@ repositories {
 
 dependencies {
     implementation(kotlin("reflect"))
+    implementation(kotlin("stdlib-jdk8"))
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-cbor:$serializationVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
