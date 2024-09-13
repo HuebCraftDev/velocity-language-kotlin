@@ -1,18 +1,21 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm")
     kotlin("kapt")
     kotlin("plugin.serialization")
-    id("com.github.johnrengelman.shadow")
+    id("com.gradleup.shadow")
     id("maven-publish")
     id("org.jetbrains.gradle.plugin.idea-ext") version "1.1.8"
+    `project-reports`
 }
 
 val kotlinVersion: String by project
 val velocityVersion: String by project
 val coroutinesVersion: String by project
 val serializationVersion: String by project
+val atomicfuVersion: String by project
 
 group = "com.velocitypowered"
 version = System.getenv("CI_COMMIT_TAG") ?: System.getenv("CI_COMMIT_SHORT_SHA")?.let {
@@ -34,6 +37,10 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk9:$coroutinesVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactive:$coroutinesVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-slf4j:$coroutinesVersion")
+    implementation("org.jetbrains.kotlinx:atomicfu:$atomicfuVersion")
+
     implementation("net.kyori:adventure-extra-kotlin:4.17.0")
 
     compileOnly("com.velocitypowered:velocity-api:$velocityVersion")
@@ -74,7 +81,7 @@ publishing {
 }
 
 val templateSrc = project.rootDir.resolve("src/main/templates")
-val templateDest = project.buildDir.resolve("generated/templates")
+val templateDest = project.layout.buildDirectory.dir("generated/templates")
 java {
     withSourcesJar()
     withJavadocJar()
@@ -87,11 +94,8 @@ java {
         }
     }
 }
-tasks.build {
-    dependsOn(tasks.shadowJar.get())
-}
-tasks {
 
+tasks {
     create<Copy>("generateTemplates") {
         val props = mapOf("version" to project.version as String)
         inputs.properties(props)
@@ -99,13 +103,18 @@ tasks {
         into(templateDest)
         expand(props)
     }
+
     withType<KotlinCompile> {
         dependsOn("generateTemplates")
-        kotlinOptions.jvmTarget = "17"
+        compilerOptions.jvmTarget = JvmTarget.JVM_17
     }
 
     withType<Jar> {
         dependsOn("generateTemplates")
+    }
+
+    build {
+        dependsOn(shadowJar)
     }
 }
 rootProject.idea.project {
