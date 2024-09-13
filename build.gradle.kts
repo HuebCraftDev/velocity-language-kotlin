@@ -46,12 +46,14 @@ dependencies {
     compileOnly("com.velocitypowered:velocity-api:$velocityVersion")
     kapt("com.velocitypowered:velocity-api:$velocityVersion")
 }
+
 publishing {
     publications {
         create<MavenPublication>("velocity-language-kotlin") {
             from(components["java"])
         }
     }
+
     repositories {
         if (System.getenv("CI_JOB_TOKEN") != null) {
             maven {
@@ -117,6 +119,7 @@ tasks {
         dependsOn(shadowJar)
     }
 }
+
 rootProject.idea.project {
     this as ExtensionAware
     configure<org.jetbrains.gradle.ext.ProjectSettings> {
