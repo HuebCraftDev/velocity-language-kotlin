@@ -16,6 +16,7 @@ val velocityVersion: String by project
 val coroutinesVersion: String by project
 val serializationVersion: String by project
 val atomicfuVersion: String by project
+val datetimeVersion: String by project
 
 group = "com.velocitypowered"
 version = System.getenv("CI_COMMIT_TAG") ?: System.getenv("CI_COMMIT_SHORT_SHA")?.let {
@@ -40,6 +41,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactive:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-slf4j:$coroutinesVersion")
     implementation("org.jetbrains.kotlinx:atomicfu:$atomicfuVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:$datetimeVersion")
 
     implementation("net.kyori:adventure-extra-kotlin:4.17.0")
 
