@@ -7,7 +7,7 @@ plugins {
     kotlin("plugin.serialization")
     id("com.gradleup.shadow")
     id("maven-publish")
-    id("org.jetbrains.gradle.plugin.idea-ext") version "1.1.8"
+    id("org.jetbrains.gradle.plugin.idea-ext") version "1.1.9"
     `project-reports`
 }
 
@@ -100,7 +100,7 @@ java {
 }
 
 tasks {
-    create<Copy>("generateTemplates") {
+    register<Copy>("generateTemplates") {
         val props = mapOf("version" to project.version as String)
         inputs.properties(props)
         from(templateSrc)
