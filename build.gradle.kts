@@ -43,7 +43,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:atomicfu:$atomicfuVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:$datetimeVersion")
 
-    implementation("net.kyori:adventure-extra-kotlin:4.17.0")
+    implementation("net.kyori:adventure-extra-kotlin:4.19.0")
 
     compileOnly("com.velocitypowered:velocity-api:$velocityVersion")
     kapt("com.velocitypowered:velocity-api:$velocityVersion")

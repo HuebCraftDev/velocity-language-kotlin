@@ -12,11 +12,12 @@ import com.velocitypowered.api.event.Continuation as EventContinuation
  * Registers an event listener for the event [E] for the given [plugin]. The listener will use a
  * suspended coroutine, allowing you to use a coroutine context to process the event in a
  * non-blocking way.
+ *
+ * @param order higher value -> earlier
  */
 inline fun <reified E> EventManager.on(
-    plugin: Any, order: PostOrder = PostOrder.NORMAL, crossinline handler: suspend (E) -> Unit
-) =
-    register(plugin, E::class.java, order) { event ->
+    plugin: Any, order: Short = Short.MIN_VALUE, crossinline handler: suspend (E) -> Unit
+) = register(plugin, E::class.java, order) { event ->
         suspendingEventTask {
             handler(event)
         }
