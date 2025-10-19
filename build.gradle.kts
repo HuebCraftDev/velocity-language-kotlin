@@ -7,7 +7,7 @@ plugins {
     kotlin("plugin.serialization")
     id("com.gradleup.shadow")
     id("maven-publish")
-    id("org.jetbrains.gradle.plugin.idea-ext") version "1.1.9"
+    id("org.jetbrains.gradle.plugin.idea-ext") version "1.3"
     `project-reports`
 }
 

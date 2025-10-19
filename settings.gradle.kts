@@ -13,6 +13,6 @@ pluginManagement {
         kotlin("kapt") version kotlinVersion
         kotlin("plugin.serialization") version kotlinVersion
 
-        id("com.gradleup.shadow") version "8.3.1"
+        id("com.gradleup.shadow") version "9.2.2"
     }
 }

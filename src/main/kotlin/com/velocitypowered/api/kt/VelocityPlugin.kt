@@ -19,13 +19,12 @@ class VelocityPlugin @Inject constructor(
     val proxy: ProxyServer,
     private val logger: Logger
 ) {
-
     init {
         proxy.eventManager.registerCoroutineContinuationAdapter(logger)
     }
 
     @Subscribe(order = PostOrder.FIRST)
-    fun onInit(event: ProxyInitializeEvent) {
+    suspend fun onInit(event: ProxyInitializeEvent) {
         logger.info("The Kotlin Language Adapter is initialized!")
     }
 }
