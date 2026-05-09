@@ -94,8 +94,8 @@ val templateDest = project.layout.buildDirectory.dir("generated/templates")
 java {
     withSourcesJar()
     withJavadocJar()
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 
     sourceSets {
         main {
@@ -115,7 +115,7 @@ tasks {
 
     withType<KotlinCompile> {
         dependsOn("generateTemplates")
-        compilerOptions.jvmTarget = JvmTarget.JVM_17
+        compilerOptions.jvmTarget = JvmTarget.JVM_21
     }
 
     withType<Jar> {
