@@ -48,7 +48,7 @@ internal fun EventManager.registerCoroutineContinuationAdapter(logger: Logger) {
     }
 }
 
-internal fun <F> EventManager.registerHandlerAdapter(
+internal fun <F : Any> EventManager.registerHandlerAdapter(
     name: String,
     filter: Predicate<Method>,
     validator: BiConsumer<Method, MutableList<String>>,
