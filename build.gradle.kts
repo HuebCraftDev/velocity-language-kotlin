@@ -131,6 +131,10 @@ tasks {
         dependsOn("generateTemplates")
     }
 
+    shadowJar {
+        duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    }
+
     build {
         dependsOn(shadowJar)
     }
