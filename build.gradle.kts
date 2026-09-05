@@ -11,12 +11,12 @@ plugins {
     `project-reports`
 }
 
-val kotlinVersion: String by project
-val velocityVersion: String by project
-val coroutinesVersion: String by project
-val serializationVersion: String by project
-val atomicfuVersion: String by project
-val datetimeVersion: String by project
+val kotlinVersion: Provider<String> = providers.gradleProperty("kotlinVersion")
+val velocityVersion: Provider<String> = providers.gradleProperty("velocityVersion")
+val coroutinesVersion: Provider<String> = providers.gradleProperty("coroutinesVersion")
+val serializationVersion: Provider<String> = providers.gradleProperty("serializationVersion")
+val atomicfuVersion: Provider<String> = providers.gradleProperty("atomicfuVersion")
+val datetimeVersion: Provider<String> = providers.gradleProperty("datetimeVersion")
 
 group = "com.velocitypowered"
 version = System.getenv("CI_COMMIT_TAG") ?: System.getenv("CI_COMMIT_SHORT_SHA")?.let {
@@ -27,26 +27,34 @@ repositories {
     mavenLocal()
     mavenCentral()
 
-    maven("https://repo.papermc.io/repository/maven-public/")
+    exclusiveContent {
+        filter {
+            includeGroupAndSubgroups("com.velocitypowered")
+            includeGroupAndSubgroups("io.papermc")
+        }
+        forRepository {
+            maven("https://repo.papermc.io/repository/maven-public/")
+        }
+    }
 }
 
 dependencies {
     implementation(kotlin("reflect"))
     implementation(kotlin("stdlib-jdk8"))
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-cbor:$serializationVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$coroutinesVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk9:$coroutinesVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactive:$coroutinesVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-slf4j:$coroutinesVersion")
-    implementation("org.jetbrains.kotlinx:atomicfu:$atomicfuVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-datetime:$datetimeVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:${serializationVersion.get()}")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-cbor:${serializationVersion.get()}")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutinesVersion.get()}")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:${coroutinesVersion.get()}")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk9:${coroutinesVersion.get()}")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactive:${coroutinesVersion.get()}")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-slf4j:${coroutinesVersion.get()}")
+    implementation("org.jetbrains.kotlinx:atomicfu:${atomicfuVersion.get()}")
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:${datetimeVersion.get()}")
 
     implementation("net.kyori:adventure-extra-kotlin:4.26.1")
 
-    compileOnly("com.velocitypowered:velocity-api:$velocityVersion")
-    kapt("com.velocitypowered:velocity-api:$velocityVersion")
+    compileOnly("com.velocitypowered:velocity-api:${velocityVersion.get()}")
+    kapt("com.velocitypowered:velocity-api:${velocityVersion.get()}")
 }
 
 publishing {
@@ -94,8 +102,8 @@ val templateDest = project.layout.buildDirectory.dir("generated/templates")
 java {
     withSourcesJar()
     withJavadocJar()
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
 
     sourceSets {
         main {
@@ -115,7 +123,8 @@ tasks {
 
     withType<KotlinCompile> {
         dependsOn("generateTemplates")
-        compilerOptions.jvmTarget = JvmTarget.JVM_21
+        compilerOptions.jvmTarget = JvmTarget.JVM_25
+        compilerOptions.jvmTarget = JvmTarget.JVM_25
     }
 
     withType<Jar> {
