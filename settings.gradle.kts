@@ -17,3 +17,7 @@ pluginManagement {
         id("org.jetbrains.gradle.plugin.idea-ext") version "1.4.1"
     }
 }
+
+plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
+}
